@@ -1,0 +1,38 @@
+Hud {
+  .header {
+    left: 128px;
+    top: 128px;
+    flex-direction: column;
+
+    label {
+      font-family: Roboto;
+      color: white;
+      font-size: 32px;
+
+      &.version {
+        font-size: 16px;
+      }
+
+      &.goal {
+        font-size: 24px;
+
+        top: 500px;
+      }
+
+      &.jump {
+        font-size: 48px;
+        color: yellow;
+
+        top: 500px;
+
+        margin-right: 10px;
+      }
+
+      &.jump_particle {
+        font-size: 40px;
+
+        top: 500px;
+      }
+    }
+  }
+}

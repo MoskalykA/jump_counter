@@ -1,0 +1,45 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+@namespace MyGame
+@inherits RootPanel
+@attribute [StyleSheet]
+
+<root>
+    <ChatBox/>
+    <VoiceList/>
+
+    <div class="header">
+        <label>Jump counter</label>
+        <label class="version">v0.0.1</label>
+
+        <label class="goal">Try to do 15 jumps in a row </label>
+
+        <div>
+            <label class="jump">@(GetJump())</label>
+            <label class="jump_particle">@(GetJumpParticle())</label>
+        </div>
+    </div>
+</root>
+
+@code
+{
+    public int GetJump()
+    {
+        var pawn = Game.LocalPawn as Pawn;
+        return pawn.Jump;
+    }
+
+    public int GetJumpParticle()
+    {
+        var pawn = Game.LocalPawn as Pawn;
+        return pawn.JumpParticle;
+    }
+
+    protected override int BuildHash()
+    {
+        var currentJump = GetJump();
+        var currentJumpParticle = GetJumpParticle();
+        return currentJump.GetHashCode() + currentJumpParticle.GetHashCode();
+    }
+}
