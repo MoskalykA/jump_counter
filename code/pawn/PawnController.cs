@@ -76,11 +76,15 @@ public class PawnController : EntityComponent<Pawn>
 				Entity.Jump++;
 				Entity.JumpParticle++;
 
+				Sandbox.Services.Stats.Increment(Entity.Client, "jumps", 1);
+
 				if (Entity.JumpParticle == 15) {
 					particle = Particles.Create("particles/jump.vpcf", Entity, true);
 
 					executeDestroy = true;
 					destroyParticle = 5;
+
+					Sandbox.Services.Stats.Increment(Entity.Client, "particles", 1);
 
 					Entity.JumpParticle = 0;
 				}
